@@ -1,0 +1,6 @@
+
+{{ $dateFormat := (default "January 2, 2006" .Site.Params.BookDateFormat) }}
+{{ with .Date}}
+  <h5>{{ .Format $dateFormat }}</h5>
+{{ end }}
+
