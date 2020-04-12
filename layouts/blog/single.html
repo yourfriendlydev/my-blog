@@ -11,12 +11,14 @@
 <div id="replybox"></div>
 <script>
   window.replybox = {
-    site: 'zPqBwv7nvr', 
+    site: 'zPqBwv7nvr',
   };
-  </script>
-  <script src="https://cdn.getreplybox.com/js/embed.js"></script>
+</script>
+<script src="https://cdn.getreplybox.com/js/embed.js"></script>
 {{ end }}
 
 {{ define "toc" }}
-  {{ partial "docs/toc" . }}
+{{ if gt (len .TableOfContents) 80}}
+{{ partial "posts/toc" . }}
+{{ end }}
 {{ end }}
