@@ -15,6 +15,7 @@ categories = [
 ]
 series = ["How to get away in 30 sec"]
 menu = "main"
+BookComments= true
 +++
 
 Hugo uses the excellent [Go][] [html/template][gohtmltemplate] library for
