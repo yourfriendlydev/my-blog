@@ -31,22 +31,22 @@ disablePathToLower = true
   contentDir = 'content'
   weight = 1
 
-[languages.ru]
-  languageName = 'Russian'
-  contentDir = 'content.ru'
-  weight = 2
+# [languages.ru]
+#   languageName = 'Russian'
+#   contentDir = 'content.ru'
+#   weight = 2
 
-[languages.cn]
-  languageName = 'Chinese'
-  contentDir = 'content.cn'
-  weight = 3
+# [languages.cn]
+#   languageName = 'Chinese'
+#   contentDir = 'content.cn'
+#   weight = 3
 
 [menu]
 [[menu.before]]
 
 [[menu.after]]
   name = "Github"
-  url = "https://github.com/alex-shpak/hugo-book"
+  url = "https://github.com/yourfriendlydev/my-site"
   weight = 10
 
 
