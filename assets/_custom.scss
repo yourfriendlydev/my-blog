@@ -2,3 +2,16 @@
 
 // @import "plugins/numbered";
 @import "plugins/scrollbars";
+
+.highlight {
+  margin-top: 1em;
+}
+
+.markdown pre {
+  margin: 1em;
+}
+.highlight pre code{
+  font-size: medium;
+  @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono&display=swap');
+  font-family: 'Roboto Mono', monospace;
+}
