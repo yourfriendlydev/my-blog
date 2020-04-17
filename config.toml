@@ -1,4 +1,4 @@
-baseURL = "http://yourfriendly.dev/"
+baseURL = "https://yourfriendly.dev/"
 languageCode = "en-us"
 title = "Your Friendly Dev"
 theme = "book"
