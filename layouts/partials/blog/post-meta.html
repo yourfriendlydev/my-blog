@@ -2,16 +2,30 @@
 {{ with .Date}}
   <h5>{{ .Format $dateFormat }}</h5>
 {{ end }}
+<div class="field is-grouped is-grouped-multiline">
 {{ range $taxonomy, $_ := .Site.Taxonomies }}
-  {{ with $terms := $.GetTerms $taxonomy }}
-  <div>
+{{ with $terms := $.GetTerms $taxonomy }}
+{{ if ne $taxonomy "tags" }}
+<div class="control">
+  <div class="tags has-addons">
     <span class="tag is-dark is-normal">
       {{ $taxonomy }}
     </span>
-    :
-    {{ range $n, $term := $terms }}{{ if $n }}, {{ end }}
-        <a href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>
-    {{- end }}
+    {{ range $n, $term := $terms }}{{ if $n }} {{ end }}
+    {{if eq $taxonomy "series"}}
+    <span class="tag is-success">
+      <a class="has-text-white" href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>        
+    </span>
+    {{else}}
+    <span class="tag is-link">
+      <a class="has-text-white" href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>        
+    </span>
+    <a class="tag is-delete"></a>
+    {{ end }}
+    {{ end }}
+  </div>
   </div>
   {{ end }}
-{{ end }}
+  {{ end }}
+  {{ end }}
+</div>
