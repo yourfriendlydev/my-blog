@@ -1,0 +1,51 @@
+<div class="columns is-vcentered">
+  <div class="column is-three-fifths is-offset-one-fifth">
+    <div class="card">
+      {{ partial "blog/post-cover" .}}
+      
+      <div class="card-content">
+        <p class="title is-size-3">
+          <a class="has-text-dark" href="{{ .RelPermalink }}">{{ .Title }}</a>
+        </p>
+        {{ $dateFormat := (default "January 2, 2006" .Site.Params.BookDateFormat) }}
+        {{ with .Date}}
+        <p class="subtitle is-size-6">{{ .Format $dateFormat }}</p>
+        {{ end }}
+        <div class="field is-grouped is-grouped-multiline">
+          {{ range $taxonomy, $_ := .Site.Taxonomies }}
+          {{ with $terms := $.GetTerms $taxonomy }}
+          {{ if ne $taxonomy "tags" }}
+          <div class="control">
+            <div class="tags has-addons">
+              <span class="tag is-dark is-normal">
+                {{ $taxonomy }}
+              </span>
+              {{ range $n, $term := $terms }}{{ if $n }} {{ end }}
+              {{if eq $taxonomy "series"}}
+              <span class="tag is-success">
+                <a class="has-text-white" href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>
+              </span>
+              {{else}}
+              <span class="tag is-link">
+                <a class="has-text-white" href="{{ $term.RelPermalink }}">{{ $term.Title }}</a>
+              </span>
+              <a class="tag is-delete"></a>
+              {{ end }}
+              {{ end }}
+            </div>
+          </div>
+          {{ end }}
+          {{ end }}
+          {{ end }}
+        </div>
+        <br>
+        <p class="has-text-black-ter">
+          {{- .Summary -}}
+          {{ if .Truncated }}
+          <a href="{{ .RelPermalink }}">...</a>
+          {{ end }}
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
