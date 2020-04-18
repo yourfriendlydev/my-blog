@@ -1,20 +1,26 @@
 {{ define "main" }}
-<article class="markdown">
+<article class="markdown content is-medium">
   <h1>
     <a href="{{ .RelPermalink }}">{{ .Title }}</a>
   </h1>
+  <!-- Metadata of blog -->
   {{ partial "blog/post-meta" . }}
+
+  <!-- Cover image of the post -->
+  <div class="container">
+    {{ if .Params.Cover}}
+    <figure class="image is-16by9">
+      <img src="{{ .Params.Cover }}" alt="Placeholder image">
+    </figure>
+    {{ end }}
+  </div>
+  <!-- Content of the blog -->
   <p>
     {{- .Content -}}
   </p>
 </article>
-<div id="replybox"></div>
-<script>
-  window.replybox = {
-    site: 'zPqBwv7nvr',
-  };
-</script>
-<script src="https://cdn.getreplybox.com/js/embed.js"></script>
+<!-- Comments block -->
+{{ partial "blog/comments" . }}
 {{ end }}
 
 {{ define "toc" }}

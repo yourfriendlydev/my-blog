@@ -1,46 +1,15 @@
 {{ define "main" }}
 {{ $paginator := .Paginate (where .Pages "Params.hidden" "ne" true) }}
-  <div class="container is-fullhd">
-      <div class="column columns is-multiline">
-          {{ range sort .Paginator.Pages }}
-          <div class="column is-full">
-              <div class="card large round">
-                <div class="card-image">
-                  <figure class="image is-3by2">
-                    <a href="{{ .RelPermalink }}"></a>
-                    <img class="fit-cover" src="https://www.pakstech.com/images/blog/2020/03/building.jpg" alt="Building image">
-                  </figure>
-                </div>
-                <div class="card-content">
-                  <div class="content">
-                      <h2>
-                          <a href="{{ .RelPermalink }}">{{ .Title }}</a>
-                      </h2>
-                      <p class="has-text-black-ter">
-                          {{ if .Description }}
-                          {{- .Description -}}
-                          {{ else }}
-                          {{- .Summary -}}
-                          {{ if .Truncated }}
-                          <a href="{{ .RelPermalink }}">...</a>
-                          {{ end }}
-                          {{ end }}
-                      </p>
-                      <!-- <time datetime="1-2-2016">11:09 PM - 1 Jan 2016</time> -->
-                  </div>
-              </div>
-              </div>
-          </div>
-          {{ end }}
-      </div>
+<div class="section">
+  <div class="container">
+    {{ range sort .Paginator.Pages }}
+      {{ partial "blog/post-cards-list" . }}
+    {{ end }}
   </div>
-  {{ template "_internal/pagination.html" . }}
+</div>
+{{ template "_internal/pagination.html" . }}
 {{ end }}
 
-
-
-
-
 {{ define "toc" }}
-  {{ partial "docs/taxonomy" . }}
+{{ partial "docs/taxonomy" . }}
 {{ end }}
